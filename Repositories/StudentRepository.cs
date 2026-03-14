@@ -38,11 +38,11 @@ namespace DotnetPractice.Repositories
 
         public void DeleteStudent(int id)
         {
-           var student =  _enrollDBcontext.Students.Where(e => e.StudentId == id); // whenever you go for 
+           var student =  _enrollDBcontext.Students.FirstOrDefault(e => e.StudentId == id); 
 
            if(student != null)
             {
-                _enrollDBcontext.Students.Remove((Student)student);
+                _enrollDBcontext.Students.Remove(student);
                 _enrollDBcontext.SaveChanges();
             }
             else
@@ -55,7 +55,7 @@ namespace DotnetPractice.Repositories
         public void UpdateStudent(int id , string name)
         {
             //    var b =  _enrollDBcontext.Students.Where(e => e.StudentId == id); // here var is not Student ,it is IQueryable<>.... where returns IQueryable , but if i want single studet  i go for singleordefault or firstordefault...
-            var b = _enrollDBcontext.Students.Find(id);
+            var b = _enrollDBcontext.Students.FirstOrDefault(e => e.StudentId == id);
 
             if(b != null)
             {

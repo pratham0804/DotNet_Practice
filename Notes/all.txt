@@ -1,1 +1,20 @@
-whenever you want one record dont use where, as it returns iqueryable instead of yoour object say student..... use firstordefault , single or find 
+whenever you want one record dont use where, as it returns iqueryable instead of yoour object say student..... use firstordefault , single or find
+
+
+
+
+2. DI is used for services or shared components (DbContext, repositories, services).
+
+Entities (Student, Course, Enrollment) are just data objects representing rows in a table.
+
+They are created per operation/request, so you instantiate them normally when needed.
+
+dont use dependency injection for normal entities, as we are not sharing it.... 
+
+
+
+
+
+
+
+3. find me lamba function pass nahi hota , it is method of class List......  

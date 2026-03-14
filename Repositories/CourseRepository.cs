@@ -1,12 +1,68 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using DotnetPractice.Models;
+using DotnetPractice.Data;
 
 namespace DotnetPractice.Repositories
 {
-    public class CourseRepository
-    {
+    public class CourseRepository : ICourseRepository 
+    {   
+
+        private readonly EnrollDBcontext _enrolldbcontext;
+        // private readonly Course _c;
+        public CourseRepository(EnrollDBcontext enrollDBcontext){
+            this._enrolldbcontext = enrollDBcontext;
+        }
+
+        public List<Course> GetAllCourses(){
+            return  _enrolldbcontext.Courses.ToList();
+        }
         
+        public Course GetCourseById(int id){
+
+           var course =  _enrolldbcontext.Courses.FirstOrDefault(e => e.CourseId == id);
+           if(course != null){
+                return course;
+           }
+           else{
+               Console.WriteLine($"Course with {id} does not exist");
+           }
+        }
+
+        public void CreateCourse(string Title,int Credits){
+            Course c = new Course{
+                this.Title = Title,
+                this.Credits = Credits
+            };
+            
+            _enrolldbcontext.Courses.Add(c);
+            _enrolldbcontext.SaveChanges();
+        }
+
+        public void DeleteCourse(int id){
+           Course course =  _enrolldbcontext.Courses.FirstOrDefault(e => e.CourseId == id);
+
+           if(course != null){
+                _enrolldbcontext.Courses.Remove(course);
+                _enrolldbcontext.SaveChanges();
+           }
+           else{
+                Console.WriteLine($"Course with {id} does not exist");
+           }
+         
+        }
+
+        public void UpdateCourseTitle(int id,string Title){
+            var course   = _enrolldbcontext.Courses.FirstOrDefault(e => e.CourseId == id);
+
+            if(course != null){
+                _enrolldbcontext.Courses.Title = Title;
+                _enrolldbcontext.SaveChanges();
+            }
+            else{
+                Console.WriteLine($"Course with {id} does not exist");
+            }
+
+            return null;
+        }
     }
 }

@@ -1,15 +1,20 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using DotnetPractice.Models;
 
 namespace DotnetPractice.Repositories
 {
     public interface ICourseRepository
     {
-        public void CreateCourse()
-        {
+        public List<Course> GetAllCourses();
         
-        }
+        public Course GetCourseById(int id);
+
+        public void CreateCourse(string Title,int Credits);
+
+        public void DeleteCourse(int id);
+
+        public void UpdateCourseTitle(int id,string Title);
+
+        
     }
 }
