@@ -1,0 +1,15 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace DotnetPractice.Repositories
+{
+    public interface ICourseRepository
+    {
+        public void CreateCourse()
+        {
+        
+        }
+    }
+}

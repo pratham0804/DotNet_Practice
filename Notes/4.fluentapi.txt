@@ -1,0 +1,7 @@
+HasKey()
+Property()
+IsRequired()
+HasMaxLength()
+HasOne()
+WithMany()
+HasForeignKey()

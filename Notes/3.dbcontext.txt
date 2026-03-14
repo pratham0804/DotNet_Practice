@@ -1,0 +1,105 @@
+EF Core Quick Revision Notes
+1. Entity Classes
+
+Always use properties, not fields
+
+Syntax:
+
+public int Id { get; set; }
+
+Never write:
+
+public int Id;
+2. Naming Conventions
+
+Classes → PascalCase
+
+Student
+Course
+Enrollment
+
+DbContext → SomethingDbContext
+
+EnrollmentDbContext
+3. Navigation Properties Pattern
+
+Follow the ForeignKey + Navigation pattern:
+
+StudentId
+Student
+CourseId
+Course
+
+This helps EF Core automatically detect relationships.
+
+4. Collections in Relationships
+
+For one-to-many relationships, use:
+
+ICollection<T>
+
+Example:
+
+ICollection<Enrollment>
+
+Initialize it:
+
+= new List<Enrollment>()
+5. DbContext Responsibilities
+
+DbContext does three things:
+
+Defines tables
+
+Configures database provider
+
+Configures relationships
+
+6. DbSet Represents Tables
+DbSet<Student> → Students table
+DbSet<Course> → Courses table
+DbSet<Enrollment> → Enrollments table
+7. Correct EF Core Namespace
+
+Always import:
+
+using Microsoft.EntityFrameworkCore;
+
+Common mistake:
+
+Microsoft.EntiryFramework ❌
+8. OnConfiguring Method Syntax
+
+Correct syntax:
+
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+Used when configuring database inside DbContext.
+
+9. SQLite Configuration Example
+optionsBuilder.UseSqlite("Data Source=database.db");
+10. Migration Flow
+
+After DbContext is ready:
+
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+
+This creates the database and tables.
+
+11. Relationship Mental Model
+Student 1 → many Enrollments
+Course 1 → many Enrollments
+
+So overall:
+
+Student * ↔ * Course
+
+via Enrollment table.
+
+Golden Rule (Important)
+Entities → represent tables
+DbSet → represents table access
+DbContext → represents database
+
+If you want, I can also give you a 10-line "EF Core mental map" that makes the entire architecture (Entities → DbContext → Repository → Service → Controller) instantly clear.

@@ -1,0 +1,61 @@
+# Build results
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# User-specific files
+*.user
+*.userprefs
+*.suo
+*.sln.docstates
+
+# Visual Studio cache/options
+.vs/
+.vscode/
+*.dcproj.filters
+
+# NuGet
+.nuget/
+packages/
+*.nuspec
+
+# Runtime files
+*.runtimeconfig.json
+*.deps.json
+
+# IDE files
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Rider IDE
+.idea/
+.gradle/
+*.iml
+*.iws
+*.ipr
+
+# Local environment
+.env
+.env.local
+
+# Logs
+logs/
+*.log
+
+# Build and test results
+TestResults/
+coverage/
+.coverage
