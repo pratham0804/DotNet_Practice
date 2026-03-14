@@ -19,19 +19,21 @@ namespace DotnetPractice.Repositories
         
         public Course GetCourseById(int id){
 
-           var course =  _enrolldbcontext.Courses.FirstOrDefault(e => e.CourseId == id);
+           var course = _enrolldbcontext.Courses.FirstOrDefault(e => e.CourseId == id);
            if(course != null){
                 return course;
            }
            else{
                Console.WriteLine($"Course with {id} does not exist");
+               return null;
            }
         }
 
-        public void CreateCourse(string Title,int Credits){
-            Course c = new Course{
-                this.Title = Title,
-                this.Credits = Credits
+        public void CreateCourse(string title,int credits){
+            
+            Course c = new Course {
+                Title = title,
+                Credits = credits
             };
             
             _enrolldbcontext.Courses.Add(c);
@@ -51,18 +53,19 @@ namespace DotnetPractice.Repositories
          
         }
 
-        public void UpdateCourseTitle(int id,string Title){
+        public void UpdateCourseTitle(int id,string title){
             var course   = _enrolldbcontext.Courses.FirstOrDefault(e => e.CourseId == id);
 
             if(course != null){
-                _enrolldbcontext.Courses.Title = Title;
+                course.Title = title;
                 _enrolldbcontext.SaveChanges();
             }
             else{
                 Console.WriteLine($"Course with {id} does not exist");
+                
             }
 
-            return null;
+            
         }
     }
 }

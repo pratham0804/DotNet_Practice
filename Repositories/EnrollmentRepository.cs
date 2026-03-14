@@ -29,7 +29,7 @@ namespace DotnetPractice.Repositories
         }
 
         public void RemoveEnrollment(int id){
-            var enrollment = _enrolldbcontext.Enrollments.FirstOrDefault(e => e.Eid = id);
+            var enrollment = _enrolldbcontext.Enrollments.FirstOrDefault(e => e.Eid == id);
 
             if(enrollment != null){
                 _enrolldbcontext.Enrollments.Remove(enrollment);
