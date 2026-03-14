@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetPractice.Repositories
 {
-    public class StudentRepository
+    public class StudentRepository : IStudentRepository
     {
 
         // we can hardcode the dbcontext object here , which will be tight coupling , so we make use of dependency injection 
@@ -20,11 +20,12 @@ namespace DotnetPractice.Repositories
            return  _enrollDBcontext.Students.ToList();
         }
 
-        public void CreateStudent(string name , int age)
+        public void CreateStudent(string name ,string email, int age)
         {
             Student s = new Student
             {
                 StudentName = name,
+                Email = email,
                 Age = age
             }; 
             
@@ -37,7 +38,7 @@ namespace DotnetPractice.Repositories
 
         public void DeleteStudent(int id)
         {
-           var student =  _enrollDBcontext.Students.Where(e => e.StudentId == id);
+           var student =  _enrollDBcontext.Students.Where(e => e.StudentId == id); // whenever you go for 
 
            if(student != null)
             {

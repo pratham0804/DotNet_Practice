@@ -20,7 +20,7 @@ namespace DotnetPractice.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Initial Catalog=Practice;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True;Integrated Security=True");
+            optionsBuilder.UseSqlite("Data Source=Enrolldb.db");
 
         }
         public DbSet<Student> Students {get; set;}

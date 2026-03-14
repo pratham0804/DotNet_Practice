@@ -1,0 +1,1 @@
+whenever you want one record dont use where, as it returns iqueryable instead of yoour object say student..... use firstordefault , single or find 

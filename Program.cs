@@ -8,9 +8,9 @@ builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
-    builder.Services.AddTransient<IStudentRepository,StudentRepository>();
-    builder.Services.AddTransient<ICourseRepository,CourseRepository>();
-    builder.Services.AddTransient<IEnrollmentRepository,EnrollmentRepository>();
+    // builder.Services.AddTransient<IStudentRepository,StudentRepository>();
+    // builder.Services.AddTransient<ICourseRepository,CourseRepository>();
+    // builder.Services.AddTransient<IEnrollmentRepository,EnrollmentRepository>();
 
 
 var app = builder.Build();
