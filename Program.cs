@@ -1,5 +1,10 @@
 using DotnetPractice.Repositories;
 using Swashbuckle.AspNetCore;
+using DotnetPractice.Services;
+using DotnetPractice.Data;
+using Microsoft.EntityFrameworkCore;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,10 +13,24 @@ builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
-builder.Services.AddTransient<IStudentRepository,StudentRepository>();
-builder.Services.AddTransient<ICourseRepository,CourseRepository>();
-builder.Services.AddTransient<IEnrollmentRepository,EnrollmentRepository>();
 
+builder.Services.AddDbContext<EnrollDBcontext>(options =>
+    options.UseSqlite("Data Source=Enrolldb.db"));
+
+
+
+
+
+// Repositories
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+builder.Services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
+
+
+
+builder.Services.AddScoped<IStudentService,StudentService>();
+builder.Services.AddScoped<ICourseService,CourseService>();
+builder.Services.AddScoped<IEnrollmentService ,EnrollmentService>();
 
 var app = builder.Build();
 

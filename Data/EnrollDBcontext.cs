@@ -8,11 +8,10 @@ namespace DotnetPractice.Data
 {
     public class EnrollDBcontext : DbContext
     {
-        public EnrollDBcontext()
+        public EnrollDBcontext(DbContextOptions<EnrollDBcontext> options)
+            : base(options)
         {
-            
         }
-
 
         // lets override the onconfiguring method
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
