@@ -8,6 +8,7 @@ namespace DotnetPractice.Repositories
     public interface IStudentRepository
     {
         public List<Student> GetAllStudents();
+        public Student GetStudentById(int id);
 
         public void CreateStudent(string name , string email , int age);
 

@@ -18,3 +18,43 @@ dont use dependency injection for normal entities, as we are not sharing it....
 
 
 3. find me lamba function pass nahi hota , it is method of class List......  
+
+
+4. Small Architectural Improvement (Important)
+
+Instead of:
+
+Console.WriteLine("Course does not exist");
+
+Services usually do not print to console.
+
+Why?
+
+Because services are used by:
+
+Controllers
+
+Background jobs
+
+APIs
+
+Other services
+
+Instead, service should either:
+
+return null
+
+return bool
+
+throw exception
+
+Example better design:
+
+if(course == null)
+{
+    return false;
+}
+
+Controller decides what message to show.
+
+But for learning purposes, your current approach is fine.

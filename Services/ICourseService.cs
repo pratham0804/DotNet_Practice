@@ -1,11 +1,12 @@
 using System;
+using DotnetPractice.Repositories;
 using DotnetPractice.Models;
 
-namespace DotnetPractice.Repositories
-{
-    public interface ICourseRepository
-    {
-        public List<Course> GetAllCourses();
+namespace DotnetPractice.Services {
+
+  public interface ICourseService {
+     
+      public List<Course> GetAllCourses();
         
         public Course GetCourseById(int id);
 
@@ -14,7 +15,7 @@ namespace DotnetPractice.Repositories
         public void DeleteCourse(int id);
 
         public void UpdateCourseTitle(int id,string title);
+  }
+  
 
-        
-    }
 }

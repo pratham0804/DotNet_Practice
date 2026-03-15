@@ -20,6 +20,10 @@ namespace DotnetPractice.Repositories
            return  _enrollDBcontext.Students.ToList();
         }
 
+        public Student GetStudentById(int id){
+           var a = _enrollDBcontext.Students.FirstOrDefault(e => e.StudentId == id);
+           return a;
+        }
         public void CreateStudent(string name ,string email, int age)
         {
             Student s = new Student
